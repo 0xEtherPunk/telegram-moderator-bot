@@ -1,73 +1,70 @@
+# Telegram Moderator Bot
 
-## Telegram Бот-Модератор
+[Русская версия](README.ru.md)
 
->Бот для модерации чата Telegram, который автоматически удаляет сообщения с нецензурной лексикой.
+>Telegram chat moderation bot that automatically removes messages containing profanity.
 
-## Функционал
+## Features
 
-- **🔍 Отслеживание нецензурных выражений в сообщениях**
-- **🗑️ Автоматическое удаление сообщений с матом**
-- **⚠️ Отправка предупреждений нарушителям**
-- **🔄 Поддержка проверки отредактированных сообщений**
-- **🔡 Обнаружение замаскированных матов (транслит, похожие символы)**
+- **🔍 Monitoring messages for profanity**
+- **🗑️ Automatic removal of messages containing swear words**
+- **⚠️ Sending warnings to violators**
+- **🔄 Support for checking edited messages**
+- **🔡 Detection of masked profanity (transliteration, similar symbols)**
 
-## Установка
+## Installation
 
-##### 1. **Клонируйте репозиторий**:
+##### 1. **Clone the repository**:
 ```
-   git clone https://github.com/0xEtherPunk/telegram-moderator-bot.git
-   cd telegram-moderator-bot
-```
-
-
-##### 2. **Установите зависимости**:
-
-```
-pip install aiogram transliterate
+git clone https://github.com/0xEtherPunk/telegram-moderator-bot.git
+cd telegram-moderator-bot
 ```
 
-##### 3. Отредактируйте `conf.py`:
-
+##### 2. **Install dependencies**:
 ```
-bot_token = "YOUR_BOT_TOKEN" # Получите у @BotFather
-
-group_id = "YOUR_GROUP_ID" # ID вашей группы
+pip install aiogram transliterate
 ```
 
-## Запуск
+##### 3. Edit `conf.py`:
+```
+bot_token = "YOUR_BOT_TOKEN" # Get from @BotFather
+group_id = "YOUR_GROUP_ID" # Your group ID
+```
+
+## Launch
 
 ```
-python main.py
+python main.py
 ```
 
 ---
 
-## Настройка
+## Configuration
 
-#### Права бота
-- Бот должен быть администратором группы
-- Необходимы права на удаление сообщений
+#### Bot Permissions
+- Bot must be a group administrator
+- Delete message permissions required
 
-#### Редактирование списков слов
-В файле `filters/words.py` можно настроить:
-- `bad_words` - список запрещенных слов
-- `not_bad_words` - список исключений
-- `en_ru_map` - правила замены символов
+#### Editing Word Lists
+In `filters/words.py` you can configure:
+- `bad_words` - list of forbidden words
+- `not_bad_words` - list of exceptions
+- `en_ru_map` - symbol replacement rules
 
-### Как это работает
+### How it Works
 
-1. Бот отслеживает все новые сообщения в группе
-2. При обнаружении нецензурной лексики:
-   - Удаляет сообщение
-   - Отправляет предупреждение пользователю
-   - Удаляет предупреждение через 5 секунд
-3. Система проверяет различные способы маскировки:
-   - Транслит
-   - Похожие символы
-   - Смешанные алфавиты
+1. Bot monitors all new messages in the group
+2. When profanity is detected:
+   - Deletes the message
+   - Sends a warning to the user
+   - Removes the warning after 5 seconds
+3. The system checks various masking methods:
+   - Transliteration
+   - Similar symbols
+   - Mixed alphabets
 
 > [!important] 
-> ### Требования
+> ### Requirements
 > 
 > - Python 3.7+
 > - aiogram
